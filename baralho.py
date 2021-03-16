@@ -27,10 +27,16 @@ def distribuir(baralho, jogador):
         jogador.append(baralho[n-1])
         baralho.pop()
 
+def coringa(baralho):
+    coringa = baralho[len(baralho)-1]
+    baralho.pop()
+    return coringa
 
 embaralhar(baralho)
 distribuir(baralho, jogador1)
 distribuir(baralho, computador)
+coringa = coringa(baralho)
 print(baralho)
 print(jogador1)
 print(computador)
+print(coringa)
