@@ -1,7 +1,7 @@
-import random
+from random import randint
 
 base = {'naipe':['PAUS', 'COPAS', 'ESPADA', 'OUROS'], 
-    'numero':['A', '2', '3', '4', '5', '6', '7', 'J', 'Q', 'K']} #Colocar o 8, 9, 10 se for usar o baralho inteiro
+    'numero':['A', '2', '3', '4', '5', '6', '7', 'Q', 'J', 'K']} #Colocar o 8, 9, 10 se for usar o baralho inteiro
 
 def embaralhar():
     baral = list()
@@ -9,8 +9,8 @@ def embaralhar():
     n = len(baral)
     while len(baral) <= 39: #Se for usar o baralho inteiro <= 51
         n = len(baral)
-        carta['naipe'] = base['naipe'][random.randint(0,3)]
-        carta['numero'] = base['numero'][random.randint(0,9)] #Se for usar o baralho inteiro, até 12
+        carta['naipe'] = base['naipe'][randint(0,3)]
+        carta['numero'] = base['numero'][randint(0,9)] #Se for usar o baralho inteiro, até 12
         baral.append(carta.copy())
         for i, v in enumerate(baral):
                 if i == len(baral)-1:
@@ -33,11 +33,23 @@ def coringa(baralho):
     baralho.pop()
     return coringa
 
+def jogar(jogador):
+    n = 1
+    print(coringa)
+    if n == 1:
+        pos = 1
+        for i in jogador:
+            print(f'[{pos}]{i["numero"]}, {i["naipe"]}')
+            pos += 1
+        carta = int(input('Qual carta vai jogar: '))
+
+
 baralho = embaralhar()
 jogador1 = distribuir(baralho)
 computador = distribuir(baralho)
 coringa = coringa(baralho)
-print(baralho)
-print(jogador1)
-print(computador)
+jogar(jogador1)
+
+print(f'Jogador 1 - {jogador1}')
+print(f'Computador - {computador}')
 print(coringa)
